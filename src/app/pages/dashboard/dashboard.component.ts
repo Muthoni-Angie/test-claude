@@ -19,6 +19,7 @@ interface ClientItem {
   status: string;
   chipClass: string;
   chipLabel: string;
+  isNew?: boolean;
 }
 
 @Component({
@@ -72,6 +73,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    // if we were navigated here with a new client, add it at top
+    const nav = this.router.getCurrentNavigation();
+    const newClient = nav?.extras.state?.newClient as ClientItem | undefined;
+    if (newClient) {
+      this.allClients.unshift(newClient);
+      this.currentPage = 1;
+    }
+
     this.searchSub = this.search$
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe((value) => {

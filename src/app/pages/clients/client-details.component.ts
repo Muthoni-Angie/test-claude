@@ -13,6 +13,10 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 export class ClientDetailsComponent {
   readonly clientId = this.route.snapshot.paramMap.get('id') ?? '1';
 
+  // simulate status retrieved from server/route data
+  // possible values: 'admission', 'assessment', 'active', 'completed', etc.
+  clientStatus: string = 'assessment';
+
   constructor(
     private readonly route: ActivatedRoute,
     private readonly location: Location,

@@ -27,9 +27,27 @@ export class IntakeFormComponent {
     targetGroup: '',
     placeOfOrigin: '',
     educationLevel: '',
+    hasChildren: '',
+    physicalDisabilities: '',
+    healthIssues: '',
+    uniqueTalents: '',
+    familyBackground: '',
+    expectationsAfterProgram: '',
+    planningDate: '',
+    reassignedManager: '',
+    cohort: '',
+    dormNumber: '',
+    tikoCardNumber: ''
   };
 
   readonly phonePattern = '^[+]?[\\d\\s\\-\\(\\)]{7,20}$';
+
+  // sample case managers list
+  caseManagers = [
+    'Alexa Brown',
+    'John Doe',
+    'Jane Smith'
+  ];
 
   constructor(
     private readonly location: Location,
@@ -37,15 +55,34 @@ export class IntakeFormComponent {
     private readonly cdr: ChangeDetectorRef
   ) {}
 
+  private generateId(): string {
+    return Math.random().toString(36).substr(2, 9);
+  }
+
   submit(f: NgForm): void {
     if (f.invalid) {
       f.form.markAllAsTouched();
       this.cdr.markForCheck();
       return;
     }
+    // create a client record to send back
+    const newClient = {
+      id: this.generateId(),
+      name: this.model.fullName,
+      age: this.model.age || 0,
+      intakeDate: new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }),
+      category: this.model.admissionCategory || '',
+      status: 'admission',
+      chipClass: 'status-chip--blue',
+      chipLabel: 'Admission',
+      isNew: true,
+    };
+
     this.submitted = true;
     this.cdr.markForCheck();
-    setTimeout(() => this.router.navigateByUrl('/dashboard'), 900);
+    setTimeout(() => {
+      this.router.navigate(['/dashboard'], { state: { newClient } });
+    }, 900);
   }
 
   goBack(): void {

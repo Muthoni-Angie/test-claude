@@ -1,7 +1,7 @@
 <div class="page-header">
   <button class="back-btn" (click)="goBack()">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <polyline points="15 18 9 12 15 6"/>
+      <polyline points="15 18 9 12 15 6" />
     </svg>
   </button>
   <div>
@@ -9,30 +9,147 @@
     <p class="subtitle">Rimadhiya Makiptono &nbsp;·&nbsp; CLT-MM158KUA-PG0O</p>
   </div>
 </div>
+<form #f="ngForm" (ngSubmit)="submit(f)" novalidate>
+  <section class="card">
+    <div class="form-field" [class.has-error]="childhoodExperience.invalid && childhoodExperience.touched">
+      <label>Childhood Experience *</label>
+      <textarea name="childhoodExperience" #childhoodExperience="ngModel" [(ngModel)]="model.childhoodExperience"
+        required rows="4" placeholder="Describe the client's childhood..."></textarea>
+      <span class="field-error" *ngIf="childhoodExperience.invalid && childhoodExperience.touched">This field is
+        required</span>
+    </div>
 
-<section class="card">
-  <div class="form-field">
-    <label>Childhood Experience *</label>
-    <textarea rows="4" placeholder="Describe the client's childhood..."></textarea>
+    <div class="form-field" [class.has-error]="familyRelationships.invalid && familyRelationships.touched">
+      <label>Family Relationships *</label>
+      <textarea name="familyRelationships" #familyRelationships="ngModel" [(ngModel)]="model.familyRelationships"
+        required rows="4" placeholder="Current and past family dynamics..."></textarea>
+      <span class="field-error" *ngIf="familyRelationships.invalid && familyRelationships.touched">This field is
+        required</span>
+    </div>
+
+    <div class="form-field">
+      <label>Education History</label>
+      <textarea name="educationHistory" [(ngModel)]="model.educationHistory" rows="4"
+        placeholder="Educational background..."></textarea>
+    </div>
+    <div class="form-field">
+      <label>Employment History</label>
+      <textarea name="employmentHistory" [(ngModel)]="model.employmentHistory" rows="4"
+        placeholder="Work experience..."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>Substance Use History</label>
+      <textarea name="substanceUseHistory" [(ngModel)]="model.substanceUseHistory" rows="4"
+        placeholder="Any substance use..."></textarea>
+    </div>
+    <div class="form-field">
+      <label>Mental Health History</label>
+      <textarea name="mentalHealthHistory" [(ngModel)]="model.mentalHealthHistory" rows="4"
+        placeholder="Previous mental health concerns..."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>Previous Treatment</label>
+      <textarea name="previousTreatment" [(ngModel)]="model.previousTreatment" rows="4"
+        placeholder="Any previous treatment or programs..."></textarea>
+    </div>
+
+    <div class="form-field" [class.has-error]="currentSymptoms.invalid && currentSymptoms.touched">
+      <label>Current Symptoms *</label>
+      <textarea name="currentSymptoms" #currentSymptoms="ngModel" [(ngModel)]="model.currentSymptoms" required rows="4"
+        placeholder="Current emotional/psychological state..."></textarea>
+      <span class="field-error" *ngIf="currentSymptoms.invalid && currentSymptoms.touched">This field is required</span>
+    </div>
+
+    <div class="form-field">
+      <label>Coping Mechanisms</label>
+      <textarea name="copingMechanisms" [(ngModel)]="model.copingMechanisms" rows="4"
+        placeholder="How does the client cope..."></textarea>
+    </div>
+    <div class="form-field">
+      <label>Support Network</label>
+      <textarea name="supportNetwork" [(ngModel)]="model.supportNetwork" rows="4"
+        placeholder="Friends, family, community support..."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>Living Conditions (Prior)</label>
+      <textarea name="livingConditions" [(ngModel)]="model.livingConditions" rows="4"
+        placeholder="Describe living situation before the center..."></textarea>
+    </div>
+    <div class="form-field">
+      <label>Legal Issues</label>
+      <textarea name="legalIssues" [(ngModel)]="model.legalIssues" rows="4"
+        placeholder="Any legal concerns..."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>Physical Health</label>
+      <textarea name="physicalHealth" [(ngModel)]="model.physicalHealth" rows="4"
+        placeholder="Current physical health status..."></textarea>
+    </div>
+    <div class="form-field">
+      <label>Nutrition Status</label>
+      <textarea name="nutritionStatus" [(ngModel)]="model.nutritionStatus" rows="4"
+        placeholder="Nutritional concerns..."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>Trauma History</label>
+      <textarea name="traumaHistory" [(ngModel)]="model.traumaHistory" rows="4"
+        placeholder="Relevant trauma history (handle with sensitivity)..."></textarea>
+    </div>
+
+    <div class="form-field" [class.has-error]="futureGoals.invalid && futureGoals.touched">
+      <label>Future Goals *</label>
+      <textarea name="futureGoals" #futureGoals="ngModel" [(ngModel)]="model.futureGoals" required rows="4"
+        placeholder="Client's goals and aspirations..."></textarea>
+      <span class="field-error" *ngIf="futureGoals.invalid && futureGoals.touched">This field is required</span>
+    </div>
+  </section>
+
+
+
+  <!-- Survey Summary (Case Manager Only) -->
+  <section class="card">
+    <h2>Survey Summary (Case Manager Only)</h2>
+    <hr class="section-divider" />
+    <p class="section-desc">Your professional observations, summary of the assessment, and initial recommendations.</p>
+    <div class="form-field" [class.has-error]="summaryObservations.invalid && summaryObservations.touched">
+      <label>Summary &amp; Observations *</label>
+      <textarea name="summaryObservations" #summaryObservations="ngModel" [(ngModel)]="model.summaryObservations"
+        required rows="3"
+        placeholder="Your professional observations, summary of the assessment, and initial recommendations..."></textarea>
+      <span class="field-error" *ngIf="summaryObservations.invalid && summaryObservations.touched">Summary is
+        required</span>
+    </div>
+  </section>
+
+  <!-- Re-Assign Case Manager -->
+  <section class="card">
+    <h2>Re-Assign Case Manager</h2>
+    <hr class="section-divider" />
+    <p class="section-desc">Currently assigned Case Manager for {{ model.fullName || 'this client' }} is Alexa Brown, if
+      you want to change the Case Manager please select one from the dropdown form.</p>
+    <div class="form-field">
+      <label>Case Manager</label>
+      <select name="reassignedManager" [(ngModel)]="model.reassignedManager">
+        <option value="">Select Case Manager</option>
+        <option *ngFor="let m of caseManagers" [value]="m">{{ m }}</option>
+      </select>
+    </div>
+  </section>
+
+  <div class="form-actions">
+    <button class="secondary-btn" type="button" (click)="goBack()">Leave form</button>
+    <button class="primary-btn submit-btn" type="submit" [disabled]="submitted">
+      <svg *ngIf="!submitted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2.5">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      {{ submitted ? 'Submitting…' : 'Submit Form' }}
+    </button>
   </div>
-  <div class="form-field">
-    <label>Family Relationships *</label>
-    <textarea rows="4" placeholder="Current and past family dynamics..."></textarea>
-  </div>
-  <div class="form-field">
-    <label>Education History</label>
-    <textarea rows="4" placeholder="Educational background..."></textarea>
-  </div>
-  <div class="form-field">
-    <label>Employment History</label>
-    <textarea rows="4" placeholder="Work experience..."></textarea>
-  </div>
-  <div class="form-field">
-    <label>Substance Use History</label>
-    <textarea rows="4" placeholder="Any substance use..."></textarea>
-  </div>
-  <div class="form-field">
-    <label>Mental Health History</label>
-    <textarea rows="4" placeholder="Previous mental health concerns..."></textarea>
-  </div>
-</section>
+
+</form>

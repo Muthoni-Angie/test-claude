@@ -21,6 +21,8 @@
 
   <section class="card">
     <h2>Personal Details</h2>
+    <hr class="section-divider" />
+    <p class="section-desc">Enter the client's basic personal information so we can identify them.</p>
 
     <div class="grid-2">
       <div class="form-field" [class.has-error]="fullName.invalid && fullName.touched">
@@ -98,6 +100,8 @@
 
   <section class="card">
     <h2>Background &amp; Admission</h2>
+    <hr class="section-divider" />
+    <p class="section-desc">Record the client's admission category and any relevant background details.</p>
 
     <div class="grid-2">
       <div class="form-field" [class.has-error]="admCat.invalid && admCat.touched">
@@ -134,15 +138,107 @@
         <input name="educationLevel" [(ngModel)]="model.educationLevel" placeholder="Highest education level" />
       </div>
     </div>
+
+    <div class="grid-2">
+      <div class="form-field">
+        <label>Cohort</label>
+        <input name="cohort" [(ngModel)]="model.cohort" placeholder="e.g. March 2026" />
+      </div>
+      <div class="form-field">
+        <label>Dorm Number</label>
+        <input name="dormNumber" [(ngModel)]="model.dormNumber" placeholder="Dorm number" />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Tiko Card Number</label>
+      <input name="tikoCard" [(ngModel)]="model.tikoCardNumber" placeholder="Tiko card number" />
+    </div>
+  </section>
+
+  <!-- Health & Additional Info -->
+  <section class="card">
+    <h2>Health &amp; Additional Info</h2>
+    <hr class="section-divider" />
+    <p class="section-desc">Provide any health-related information and other useful notes.</p>
+    <div class="grid-2">
+      <div class="form-field">
+        <label>Has Children?</label>
+        <select name="hasChildren" [(ngModel)]="model.hasChildren">
+          <option value="">Select</option>
+          <option>Yes</option><option>No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Physical Disabilities</label>
+        <textarea name="physicalDisabilities" [(ngModel)]="model.physicalDisabilities" rows="4" placeholder="Describe any disabilities"></textarea>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="form-field">
+        <label>Health Issues</label>
+        <textarea name="healthIssues" [(ngModel)]="model.healthIssues" rows="4" placeholder="List health issues"></textarea>
+      </div>
+      <div class="form-field">
+        <label>Unique Talents</label>
+        <textarea name="uniqueTalents" [(ngModel)]="model.uniqueTalents" rows="4" placeholder="Any talents?"></textarea>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- Family Background & Expectations -->
+  <section class="card">
+    <h2>Family Background &amp; Expectations</h2>
+    <hr class="section-divider" />
+    <p class="section-desc">Tell us about the client's family history and their goals after the program.</p>
+    <div class="form-field">
+      <label>Family Background</label>
+      <textarea name="familyBackground" [(ngModel)]="model.familyBackground" rows="3" placeholder="Brief family history..."></textarea>
+    </div>
+    <div class="form-field">
+      <label>Expectations After Program</label>
+      <textarea name="expectationsAfterProgram" [(ngModel)]="model.expectationsAfterProgram" rows="3" placeholder="Client's goals and expectations..."></textarea>
+    </div>
+  </section>
+
+  <!-- Next step: Planning -->
+  <section class="card">
+    <h2>Next step: Planning</h2>
+    <hr class="section-divider" />
+    <p class="section-desc">Please select a planning date so we can automatically remind you when it's time to follow up with this client.</p>
+    <div class="form-field">
+      <label>Planning date</label>
+      <input type="date" name="planningDate" [(ngModel)]="model.planningDate" />
+    </div>
+  </section>
+
+  <!-- Re-Assign Case Manager -->
+  <section class="card">
+    <h2>Re-Assign Case Manager</h2>
+    <hr class="section-divider" />
+    <p class="section-desc">Currently assigned Case Manager for {{ model.fullName || 'this client' }} is Alexa Brown, if you want to change the Case Manager please select one from the dropdown form.</p>
+    <div class="form-field">
+      <label>Case Manager</label>
+      <select name="reassignedManager" [(ngModel)]="model.reassignedManager">
+        <option value="">Select Case Manager</option>
+        <option *ngFor="let m of caseManagers" [value]="m">{{ m }}</option>
+      </select>
+    </div>
   </section>
 
   <div class="form-actions">
-    <button class="secondary-btn" type="button" (click)="goBack()">Cancel</button>
+    <button class="secondary-btn" type="button" (click)="goBack()">Leave form</button>
     <button class="primary-btn submit-btn" type="submit" [disabled]="submitted">
       <svg *ngIf="!submitted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <polyline points="20 6 9 17 4 12"/>
       </svg>
-      {{ submitted ? 'Submitting…' : 'Submit Intake' }}
+      {{ submitted ? 'Submitting…' : 'Submit Form' }}
     </button>
   </div>
 

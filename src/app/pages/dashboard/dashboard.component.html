@@ -78,6 +78,7 @@
     <div class="client-main">
       <div class="name-row">
         <span class="name">{{ c.name }}</span>
+        <span *ngIf="c.isNew" class="new-badge">new</span>
         <button
           class="status-chip chip-with-icon"
           [ngClass]="c.chipClass"

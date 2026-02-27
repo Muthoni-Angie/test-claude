@@ -29,6 +29,16 @@ section + section {
   margin-top: 1rem;
 }
 
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: 0 0 1rem;
+}
+.section-desc {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

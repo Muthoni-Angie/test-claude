@@ -233,6 +233,16 @@
   flex-wrap: wrap;
 }
 
+.new-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.1rem 0.4rem;
+  text-transform: uppercase;
+}
+
 .name {
   font-size: 0.92rem;
   font-weight: 600;
