@@ -71,7 +71,24 @@
       </svg>
     </a>
 
-    <a class="action-row" href="#">
+    <a class="action-row" *ngIf="clientStatus === 'planning'" [routerLink]="['/clients', clientId, 'service-delivery']">
+      <div class="action-icon action-icon--blue">
+        <!-- clipboard or plan icon -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="1"/>
+        </svg>
+      </div>
+      <div class="action-body">
+        <div class="action-title">Service Delivery</div>
+        <div class="action-desc">Create or view service plan</div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </a>
+
+    <a class="action-row" [routerLink]="['/clients', clientId, 'exit']">
       <div class="action-icon action-icon--rose">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>

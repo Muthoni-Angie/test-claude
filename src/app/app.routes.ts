@@ -7,6 +7,8 @@ import { ClientDetailsComponent } from './pages/clients/client-details.component
 import { IntakeFormComponent } from './pages/intake/intake-form.component';
 import { AssessmentFormComponent } from './pages/assessment/assessment-form.component';
 import { ProgressCheckinComponent } from './pages/progress/progress-checkin.component';
+import { ExitFormComponent } from './pages/clients/exit-form.component';
+import { ServiceDeliveryPlanComponent } from './pages/clients/service-delivery-plan.component';
 import { RegisterClientComponent } from './pages/register/register-client.component';
 import { EditClientComponent } from './pages/clients/edit-client.component';
 import { authGuard } from './core/auth.guard';
@@ -57,6 +59,14 @@ export const appRoutes: Routes = [
       {
         path: 'clients/:id/progress',
         component: ProgressCheckinComponent
+      },
+      {
+        path: 'clients/:id/service-delivery',
+        component: ServiceDeliveryPlanComponent
+      },
+      {
+        path: 'clients/:id/exit',
+        component: ExitFormComponent
       }
     ]
   },

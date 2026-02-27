@@ -14,8 +14,9 @@ export class ClientDetailsComponent {
   readonly clientId = this.route.snapshot.paramMap.get('id') ?? '1';
 
   // simulate status retrieved from server/route data
-  // possible values: 'admission', 'assessment', 'active', 'completed', etc.
-  clientStatus: string = 'assessment';
+  // possible values: 'admission', 'assessment', 'planning', 'active', 'completed', etc.
+  // defaulting to planning to exercise the service‑delivery action link
+  clientStatus: string = 'planning';
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -25,6 +26,10 @@ export class ClientDetailsComponent {
 
   editClient(): void {
     this.router.navigate(['/clients', this.clientId, 'edit']);
+  }
+
+  goToServiceDelivery(): void {
+    this.router.navigate(['/clients', this.clientId, 'service-delivery']);
   }
 
   goBack(): void {

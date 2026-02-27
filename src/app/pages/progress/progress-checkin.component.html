@@ -10,6 +10,8 @@
   </div>
 </div>
 
+<form #f="ngForm" (ngSubmit)="submit(f)" novalidate>
+
 <section class="card rating-card">
   <h2>Overall Progress Rating *</h2>
 
@@ -17,7 +19,8 @@
     <div class="value-label" [style.left]="'calc(' + rating + '% - ' + (rating * 0.18) + 'px)'">{{ rating }}%</div>
     <input
       type="range"
-      [(ngModel)]="rating"
+      name="rating"
+      [(ngModel)]="model.rating"
       min="0"
       max="100"
       [style]="sliderStyle"
@@ -30,20 +33,61 @@
 </section>
 
 <section class="card background-card">
-  <h2>Background &amp; Admission</h2>
+  <h2>Progress Details</h2>
 
-  <div class="form-field">
+  <div class="form-field" [class.has-error]="progressNotes.invalid && progressNotes.touched">
     <label>Progress Notes *</label>
-    <textarea rows="4" placeholder="Overall progress observations..."></textarea>
+    <textarea name="progressNotes" #progressNotes="ngModel" [(ngModel)]="model.progressNotes" required rows="4" placeholder="Overall progress observations..."></textarea>
+    <span class="field-error" *ngIf="progressNotes.invalid && progressNotes.touched">This field is required</span>
   </div>
 
   <div class="form-field">
     <label>Goals Progress</label>
-    <textarea rows="4" placeholder="Progress on specific goals..."></textarea>
+    <textarea name="goalsProgress" [(ngModel)]="model.goalsProgress" rows="4" placeholder="Progress on specific goals..."></textarea>
   </div>
 
   <div class="form-field">
     <label>Challenges</label>
-    <textarea rows="4" placeholder="Current challenges or barriers..."></textarea>
+    <textarea name="challenges" [(ngModel)]="model.challenges" rows="4" placeholder="Current challenges or barriers..."></textarea>
+  </div>
+
+  <div class="form-field">
+    <label>Recommendations</label>
+    <textarea name="recommendations" [(ngModel)]="model.recommendations" rows="4" placeholder="Next steps and recommendations..."></textarea>
   </div>
 </section>
+
+<section class="card">
+  <h2>Next step: Planning</h2>
+  <hr class="section-divider" />
+  <p class="section-desc">Please select a planning date so we can automatically remind you when it's time to follow up with this client.</p>
+  <div class="form-field">
+    <label>Planning date</label>
+    <input type="date" name="planningDate" [(ngModel)]="model.planningDate" />
+  </div>
+</section>
+
+<section class="card">
+  <h2>Re-Assign Case Manager</h2>
+  <hr class="section-divider" />
+  <p class="section-desc">Currently assigned Case Manager for {{ model.fullName || 'this client' }} is Alexa Brown, if you want to change the Case Manager please select one from the dropdown form.</p>
+  <div class="form-field">
+    <label>Case Manager</label>
+    <select name="reassignedManager" [(ngModel)]="model.reassignedManager">
+      <option value="">Select Case Manager</option>
+      <option *ngFor="let m of caseManagers" [value]="m">{{ m }}</option>
+    </select>
+  </div>
+</section>
+
+<div class="form-actions">
+  <button class="secondary-btn" type="button" (click)="goBack()">Leave form</button>
+  <button class="primary-btn submit-btn" type="submit" [disabled]="submitted">
+    <svg *ngIf="!submitted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+    {{ submitted ? 'Submitting…' : 'Submit Check-in' }}
+  </button>
+</div>
+
+</form>
