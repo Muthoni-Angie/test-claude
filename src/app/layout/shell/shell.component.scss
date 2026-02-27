@@ -34,31 +34,48 @@
 }
 
 .brand-title {
-  font-weight: 700;
-  font-size: 0.96rem;
+  color: #131C20;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
 }
 
 .brand-subtitle {
-  font-size: 0.71rem;
-  color: var(--text-muted);
+  color: #565656;
+font-size: 14px;
+font-style: normal;
+font-weight: 300;
+line-height: 100%; /* 14px */
 }
 
 .powered-by {
   font-size: 0.67rem;
   color: var(--text-muted);
   padding-left: 0.1rem;
-  margin-top: 0.25rem;
+  margin-top: 30px;
 }
 
 .tiko-brand {
   font-weight: 700;
   color: var(--primary-color);
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+.tiko-brand svg {
+  width: 30px;
+  height: auto;
+  vertical-align: middle;
+  display: block;
 }
 
 .divider {
   border: none;
   border-top: 1px solid var(--border-subtle);
-  margin: 0.35rem 0;
+ margin: 50px 0 10px 0;
 }
 
 .sidebar__nav {
@@ -142,4 +159,55 @@
 
 .main-area {
   padding: 1.5rem 2rem;
+}
+
+/* responsive adjustments */
+@media (max-width: 1024px) {
+  .main-area {
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .shell {
+    grid-template-columns: 60px minmax(0, 1fr);
+  }
+
+  .sidebar {
+    padding: 1rem;
+  }
+
+  .sidebar__brand {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
+  .powered-by {
+    display: none;
+  }
+
+  .sidebar__nav a {
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  .sidebar__footer {
+    align-items: center;
+  }
+
+  .language-selector,
+  .user {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-area {
+    padding: 1rem;
+  }
 }
