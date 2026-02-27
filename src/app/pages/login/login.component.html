@@ -1,0 +1,28 @@
+<div class="login-page">
+  <div class="login-card card">
+    <div class="login-card__header">
+      <div class="brand-mark">L</div>
+      <div>
+        <div class="title">Lenegewa Case Management</div>
+        <div class="subtitle">Sign in to continue</div>
+      </div>
+    </div>
+
+    <form (ngSubmit)="submit()" autocomplete="off">
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="you@example.org" required />
+      </div>
+
+      <div class="form-field">
+        <label>Password</label>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Enter password" required />
+      </div>
+
+      <button class="primary-btn login-btn" [disabled]="loading" type="submit">
+        {{ loading ? 'Signing in…' : 'Sign in' }}
+      </button>
+    </form>
+  </div>
+</div>
+

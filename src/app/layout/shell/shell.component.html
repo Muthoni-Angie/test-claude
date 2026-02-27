@@ -1,0 +1,54 @@
+<div class="shell">
+  <aside class="sidebar">
+    <div>
+      <div class="sidebar__brand">
+        <div class="brand-mark">L</div>
+        <div class="brand-text">
+          <div class="brand-title">Lenegewa</div>
+          <div class="brand-subtitle">Case Management</div>
+        </div>
+      </div>
+      <div class="powered-by">powered by <span class="tiko-brand">tiko</span></div>
+    </div>
+
+    <hr class="divider" />
+
+    <nav class="sidebar__nav">
+      <a routerLink="/dashboard" routerLinkActive="active">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        Dashboard
+      </a>
+    </nav>
+
+    <div class="sidebar__footer">
+      <hr class="divider" />
+
+      <div class="language-selector">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span>English</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+
+      <div class="user">
+        <div class="avatar">A</div>
+        <div>
+          <div class="user-name">Alexa Brown</div>
+          <button class="logout-btn" type="button" (click)="logout()">logout</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <router-outlet></router-outlet>
+  </main>
+</div>

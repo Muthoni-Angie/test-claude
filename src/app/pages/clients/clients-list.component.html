@@ -1,0 +1,87 @@
+<div class="controls-row">
+  <div class="search-wrap">
+    <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <input
+      class="search-input"
+      [value]="searchText"
+      (input)="onSearchInput($any($event.target).value)"
+      (blur)="hideSuggestions()"
+      placeholder="Search by client name..."
+      autocomplete="off"
+    />
+    <div class="autocomplete-dropdown" *ngIf="showSuggestions">
+      <button
+        class="suggestion-item"
+        type="button"
+        *ngFor="let s of suggestions"
+        (mousedown)="selectSuggestion(s)"
+      >
+        {{ s.name }}
+      </button>
+    </div>
+  </div>
+
+  <select class="filter-select" [ngModel]="activeTab" (ngModelChange)="setTab($event)">
+    <option value="">All Statuses</option>
+    <option value="admission">Admission</option>
+    <option value="assessment">Assessment</option>
+    <option value="planning">Planning</option>
+    <option value="monitoring">Monitoring</option>
+  </select>
+
+  <button class="primary-btn" type="button" (click)="newClient()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+      <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+    </svg>
+    New Client
+  </button>
+</div>
+
+<div class="filter-tabs">
+  <button
+    class="tab-btn"
+    *ngFor="let tab of tabs"
+    [class.active]="activeTab === tab.key"
+    (click)="setTab(tab.key)"
+  >
+    <span class="tab-count">{{ tab.count }}</span>
+    {{ tab.label }}
+  </button>
+</div>
+
+<div class="clients-list">
+  <a
+    class="client-row"
+    *ngFor="let c of pagedClients"
+    [routerLink]="['/clients', c.id]"
+  >
+    <div class="client-main">
+      <div class="name-row">
+        <span class="name">{{ c.name }}</span>
+        <span class="status-chip" [ngClass]="c.chipClass">{{ activeTabLabel }}</span>
+      </div>
+      <div class="meta">Age {{ c.age }} &nbsp;·&nbsp; {{ c.intakeDate }} &nbsp;·&nbsp; {{ c.category }}</div>
+    </div>
+    <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="9 18 15 12 9 6"/>
+    </svg>
+  </a>
+</div>
+
+<div class="pagination" *ngIf="totalPages > 1">
+  <button class="page-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+    Prev
+  </button>
+  <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+  <button class="page-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+    Next
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="9 18 15 12 9 6"/>
+    </svg>
+  </button>
+</div>

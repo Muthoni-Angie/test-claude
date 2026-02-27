@@ -1,0 +1,134 @@
+<div class="page-header">
+  <button class="back-btn" (click)="goBack()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+  <div>
+    <h1>Register New Client</h1>
+    <p class="subtitle">Complete the agreement and consent forms</p>
+  </div>
+</div>
+
+<div class="step-indicator">
+  <div class="step-dot" [class.active]="step === 1" [class.done]="step > 1">
+    <span *ngIf="step <= 1">1</span>
+    <svg *ngIf="step > 1" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+  </div>
+  <div class="step-line" [class.done]="step > 1"></div>
+  <div class="step-dot" [class.active]="step === 2">
+    <span>2</span>
+  </div>
+  <div class="step-labels">
+    <span [class.active]="step === 1" [class.done]="step > 1">Client Agreement</span>
+    <span [class.active]="step === 2">Data Consent</span>
+  </div>
+</div>
+
+<!-- ── Step 1: Client Agreement ──────────────────────────────────────────── -->
+<section class="card agreement-card" *ngIf="step === 1">
+  <h2>Client Agreement</h2>
+  <p class="form-desc">
+    Read the following agreement to the client. The client must provide their
+    signature to confirm understanding and acceptance of the centre's rules and
+    commitment to the rehabilitation program.
+  </p>
+
+  <div class="form-field">
+    <label>Client Full Name *</label>
+    <input
+      type="text"
+      [(ngModel)]="clientName"
+      name="clientName"
+      placeholder="Enter client's full name"
+    />
+  </div>
+
+  <div class="terms-box">
+    <div class="terms-label">Agreement Terms:</div>
+    <p class="terms-text">
+      I, the undersigned, agree to abide by the rules and regulations of the
+      Lenegewa Rehabilitation Center. I commit to participating actively in all
+      assigned programs, attending counseling sessions, and respecting the
+      community guidelines. I understand that violations may result in review of
+      my participation status.
+    </p>
+  </div>
+
+  <div class="form-field sig-field">
+    <label>Client Agreement Signature *</label>
+    <div class="sig-canvas-wrap">
+      <canvas
+        #agreementCanvas
+        class="sig-canvas"
+        (mousedown)="agStart($event)"
+        (mousemove)="agDraw($event)"
+        (mouseup)="agStop()"
+        (mouseleave)="agStop()"
+      ></canvas>
+    </div>
+  </div>
+
+  <div class="sig-actions">
+    <button class="secondary-btn" type="button" (click)="agClear()">Clear</button>
+    <button
+      class="primary-btn"
+      type="button"
+      [disabled]="!clientName.trim() || !hasSig"
+      (click)="confirmAgreement()"
+    >
+      Confirm Signature
+    </button>
+  </div>
+</section>
+
+<!-- ── Step 2: Data Consent ──────────────────────────────────────────────── -->
+<section class="card agreement-card" *ngIf="step === 2">
+  <h2>Data Consent</h2>
+  <p class="form-desc">
+    Inform the client of how their personal data will be collected, stored, and
+    used. The client must sign below to confirm their consent to data processing
+    in accordance with the programme's privacy policy.
+  </p>
+
+  <div class="terms-box">
+    <div class="terms-label">Data Use Terms:</div>
+    <p class="terms-text">
+      I consent to the Lenegewa Rehabilitation Center collecting and storing my
+      personal information, including health and case management records, for the
+      purpose of providing rehabilitation services and programme reporting. I
+      understand that my data will be kept confidential and will not be shared
+      with third parties without my explicit consent, except where required by
+      law. I have the right to request access to, correction of, or deletion of
+      my personal data at any time.
+    </p>
+  </div>
+
+  <div class="form-field sig-field">
+    <label>Data Consent Signature *</label>
+    <div class="sig-canvas-wrap">
+      <canvas
+        #consentCanvas
+        class="sig-canvas"
+        (mousedown)="csStart($event)"
+        (mousemove)="csDraw($event)"
+        (mouseup)="csStop()"
+        (mouseleave)="csStop()"
+      ></canvas>
+    </div>
+  </div>
+
+  <div class="sig-actions">
+    <button class="secondary-btn" type="button" (click)="csClear()">Clear</button>
+    <button
+      class="primary-btn"
+      type="button"
+      [disabled]="!hasConsentSig"
+      (click)="confirmConsent()"
+    >
+      Confirm &amp; Continue
+    </button>
+  </div>
+</section>

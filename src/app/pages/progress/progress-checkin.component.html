@@ -1,0 +1,49 @@
+<div class="page-header">
+  <button class="back-btn" (click)="goBack()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+  <div>
+    <h1>Progress Check-in</h1>
+    <p class="subtitle">Rimadhiya Makiptono &nbsp;·&nbsp; CLT-MM158KUA-PG0O</p>
+  </div>
+</div>
+
+<section class="card rating-card">
+  <h2>Overall Progress Rating *</h2>
+
+  <div class="slider-container">
+    <div class="value-label" [style.left]="'calc(' + rating + '% - ' + (rating * 0.18) + 'px)'">{{ rating }}%</div>
+    <input
+      type="range"
+      [(ngModel)]="rating"
+      min="0"
+      max="100"
+      [style]="sliderStyle"
+    />
+    <div class="slider-labels">
+      <span>No Progress</span>
+      <span>Excellent</span>
+    </div>
+  </div>
+</section>
+
+<section class="card background-card">
+  <h2>Background &amp; Admission</h2>
+
+  <div class="form-field">
+    <label>Progress Notes *</label>
+    <textarea rows="4" placeholder="Overall progress observations..."></textarea>
+  </div>
+
+  <div class="form-field">
+    <label>Goals Progress</label>
+    <textarea rows="4" placeholder="Progress on specific goals..."></textarea>
+  </div>
+
+  <div class="form-field">
+    <label>Challenges</label>
+    <textarea rows="4" placeholder="Current challenges or barriers..."></textarea>
+  </div>
+</section>
