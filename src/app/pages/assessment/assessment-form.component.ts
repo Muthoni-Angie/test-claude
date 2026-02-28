@@ -14,33 +14,76 @@ export class AssessmentFormComponent {
   submitted = false;
 
   model: any = {
-    fullName: '',
+    fullName: 'Rimadhiya Makiptono',
 
-    currentSymptoms: '',
-    copingMechanisms: '',
-    supportNetwork: '',
-    livingConditions: '',
-    legalIssues: '',
-    physicalHealth: '',
-    nutritionStatus: '',
-    traumaHistory: '',
-    futureGoals: '',
-    childhoodExperience: '',
-    familyRelationships: '',
-    educationHistory: '',
-    employmentHistory: '',
-    substanceUseHistory: '',
-    mentalHealthHistory: '',
-    previousTreatment: '',
+    // Living Conditions
+    earningMethod: '',
+    livingWith: '',
+
+    // Children's Status
+    hasChildren: '',
+    childrenCount: null,
+    childrenAges: new Array(10).fill(''),
+    childrenLivedWith: '',
+    childrenLivingWith: '',
+    childrenGoToSchool: '',
+
+    // Family Status
+    familyRelationship: '',
+    familyHelps: '',
+    helpsFamily: '',
+    trustFamily: '',
+
+    // Social Connections/Skills
+    hasCloseFriend: '',
+    trustFriend: '',
+    essentialPeople: '',
+    essentialPeopleWho: '',
+    goodCommunication: '',
+
+    // Physical Health
+    hasHealthIssues: '',
+    healthIssueType: '',
+    takesMedication: '',
+    medicationType: '',
+    whenIll: '',
+    sleepingStatus: '',
+    personalHygiene: '',
+
+    // Emotional and Mental Health
+    hasMentalHealthIssues: '',
+    feelsLonely: '',
+    thoughtsOfSelfHarm: '',
+    attemptedSuicide: '',
+    suicideWhen: '',
+    suicideHow: '',
+
+    // Substance Use
+    usesDrugsAlcohol: '',
+    substanceReason: '',
+
+    // Personal Strengths and Coping Mechanisms
+    solveDailyProblems: '',
+    controlEmotionalDistress: '',
+
+    // Spirituality
+    religion: '',
+    spiritualLifeHelped: '',
+    spiritualHelp: '',
+
+    // Summary
     summaryObservations: '',
     reassignedManager: ''
   };
 
-
-  // sample case managers
   caseManagers = ['Alexa Brown', 'John Doe', 'Jane Smith'];
 
   constructor(private readonly location: Location) {}
+
+  get ageInputs(): number[] {
+    const n = Number.parseInt(this.model.childrenCount, 10) || 0;
+    return Array.from({ length: Math.min(n, 10) }, (_, i) => i);
+  }
 
   submit(form: any): void {
     if (form.invalid) {

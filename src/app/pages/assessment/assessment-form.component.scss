@@ -20,9 +20,8 @@ section.card {
   max-width: 760px;
 }
 
-/* additional utility styles copied from intake form */
 section.card h2 {
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.75rem;
   font-size: 0.96rem;
 }
 
@@ -33,7 +32,7 @@ section + section {
 .section-divider {
   border: none;
   border-top: 1px solid var(--border-subtle);
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
 }
 
 .section-desc {
@@ -42,14 +41,159 @@ section + section {
   color: #4b5563;
 }
 
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem 1.25rem;
+/* Question blocks */
+.question-block {
+  margin-bottom: 1.5rem;
 }
 
-.has-error input,
-.has-error select {
+.question-block:last-child {
+  margin-bottom: 0;
+}
+
+.question-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 0.85rem;
+}
+
+/* Radio grids */
+.radio-grid {
+  display: grid;
+  gap: 0.75rem 1rem;
+}
+
+.radio-grid.col-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.radio-grid.col-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Inline radio row */
+.radio-inline {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.radio-item input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Children count input */
+.count-input {
+  width: 80px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* Children age inputs grid */
+.age-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.age-input {
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Two-column inputs (e.g. suicide when/how) */
+.two-col-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.two-col-inputs input {
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Textareas in question blocks */
+.question-block textarea {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.question-block textarea:focus,
+.question-block input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.07);
+}
+
+/* Form field (for summary/reassign sections) */
+.form-field {
+  margin-bottom: 1rem;
+}
+
+.form-field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: #374151;
+}
+
+.form-field textarea,
+.form-field select,
+.form-field input {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-field textarea:focus,
+.form-field select:focus,
+.form-field input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.07);
+}
+
+.has-error textarea,
+.has-error select,
+.has-error input {
   border-color: #f87171;
 }
 
@@ -60,6 +204,7 @@ section + section {
   margin-top: 0.25rem;
 }
 
+/* Form actions */
 .form-actions {
   display: flex;
   gap: 0.75rem;
@@ -79,7 +224,9 @@ section + section {
   color: #374151;
 }
 
-.secondary-btn:hover { background: #f9fafb; }
+.secondary-btn:hover {
+  background: #f9fafb;
+}
 
 .submit-btn {
   display: flex;

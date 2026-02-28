@@ -1,0 +1,94 @@
+<div class="page-header">
+  <button class="back-btn" (click)="goBack()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+  <div>
+    <h1>Service Delivery Plan</h1>
+    <p class="subtitle">Rimadhiya Makiptono &nbsp;·&nbsp; CLT-MM158KUA-PG0O</p>
+  </div>
+</div>
+
+<form #f="ngForm" (ngSubmit)="submit(f)" novalidate>
+
+<section class="card">
+  <h2>Interventions *</h2>
+  <div class="interventions-grid">
+    <label *ngFor="let i of interventions" class="checkbox-item">
+      <input type="checkbox" name="intervention-{{i}}" [(ngModel)]="selectedInterventions[i]" (change)="toggleIntervention(i)" />
+      <span>{{ i }}</span>
+    </label>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Client Goals *</h2>
+  <div class="goals-list">
+    <div class="goal-row" *ngFor="let g of goals; let idx = index">
+      <input name="goal-{{idx}}" [(ngModel)]="goals[idx]" placeholder="Goal {{ idx + 1 }}" />
+      <button type="button" class="icon-small" *ngIf="goals.length > 1" (click)="removeGoal(idx)">−</button>
+    </div>
+    <button type="button" class="secondary-btn add-btn" (click)="addGoal()">+ Add Goal</button>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Steps to Be Taken *</h2>
+  <div class="steps-list">
+    <div class="step-row" *ngFor="let s of steps; let idx = index">
+      <textarea name="step-{{idx}}" [(ngModel)]="steps[idx]" placeholder="Step {{ idx + 1 }}"></textarea>
+      <button type="button" class="icon-small" *ngIf="steps.length > 1" (click)="removeStep(idx)">−</button>
+    </div>
+    <button type="button" class="secondary-btn add-btn" (click)="addStep()">+ Add Step</button>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Steps to Be Taken *</h2>
+  <div class="steps-extra">
+    <div class="form-field">
+      <label>Expected Timeline</label>
+      <input type="text" name="expectedTimeline" [(ngModel)]="model.expectedTimeline" placeholder="e.g. 3 months" />
+    </div>
+
+    <div class="form-field">
+      <label>Additional Notes</label>
+      <textarea name="additionalNotes" [(ngModel)]="model.additionalNotes" rows="3" placeholder=""></textarea>
+    </div>
+  </div>
+</section>
+
+<section class="card signature-card">
+  <h2>Client Signature *</h2>
+  <div class="sig-canvas-wrap">
+    <!-- placeholder for signature canvas -->
+    <div class="sig-canvas" aria-hidden="true"></div>
+  </div>
+  <div class="sig-actions">
+    <button type="button" class="secondary-btn" (click)="clearSignature()">Clear</button>
+    <button type="button" class="confirm-btn" (click)="confirmSignature()">Confirm Signature</button>
+  </div>
+</section>
+
+<section class="card reassign-card">
+  <h2>Re-Assign Case Manager</h2>
+  <hr class="section-divider" />
+  <p class="section-desc">Currently assigned Case Manager for {{ model.fullName || 'this client' }} is Alexa Brown, if you want to change the Case Manager please select one from the dropdown form.</p>
+  <div class="form-field">
+    <label>Case Manager</label>
+    <select name="reassignedManager" [(ngModel)]="model.reassignedManager">
+      <option value="">Select Case Manager</option>
+      <option *ngFor="let m of caseManagers" [value]="m">{{ m }}</option>
+    </select>
+  </div>
+</section>
+
+<div class="form-actions">
+  <button class="secondary-btn" type="button" (click)="goBack()">Cancel</button>
+  <button class="primary-btn submit-btn" type="submit" [disabled]="submitted">
+    {{ submitted ? 'Saving…' : 'Save Plan' }}
+  </button>
+</div>
+
+</form>

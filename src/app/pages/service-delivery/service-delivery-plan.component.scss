@@ -1,0 +1,173 @@
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.page-header h1 { margin: 0; font-size: 1.15rem; }
+.page-header .subtitle { margin: 0.15rem 0 0; font-size: 0.84rem; color: var(--text-muted); }
+
+section.card { max-width: 760px; }
+section.card {
+  max-width: 760px;
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 1rem 1rem 1.25rem;
+}
+
+section.card h2 { margin: 0 0 1rem; font-size: 0.96rem; }
+
+section.card + section.card { margin-top: 1rem; }
+
+.interventions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem 2rem;
+}
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  appearance: none;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  background: #fff;
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+  background: linear-gradient(180deg,var(--primary-color),#7f1dff);
+  border-color: transparent;
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+  content: '\2713';
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  left: 3px;
+  top: 0px;
+}
+
+.goals-list .goal-row, .steps-list .step-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+.goals-list input, .steps-list textarea {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: #fff;
+}
+
+.goals-list input:focus, .steps-list textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.06);
+}
+
+.icon-small {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-btn { margin-top: 0.6rem; }
+
+.form-actions { display: flex; gap: 0.75rem; margin-top: 1.25rem; max-width: 760px; justify-content: flex-end; }
+.secondary-btn {
+  background: #fff;
+  border: 1.5px solid var(--border-subtle);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.secondary-btn:hover { background: #f9fafb; }
+
+.primary-btn {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+}
+
+/* Signature card */
+.signature-card .sig-canvas-wrap {
+  border: 1.5px dashed var(--border-subtle);
+  border-radius: 8px;
+  background: #fff;
+  height: 130px;
+  display: block;
+  overflow: hidden;
+}
+
+.signature-card .sig-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sig-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.confirm-btn {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover { opacity: 0.95; }
+
+/* Reassign card tweaks */
+.reassign-card .section-divider { margin: 0 0 0.75rem; }
+.reassign-card .section-desc { margin: 0 0 1rem; font-size: 0.88rem; color: var(--text-muted); }
+.reassign-card .form-field select { width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1px solid var(--border-subtle); }
+
+/* Align bottom actions to match screenshot */
+.form-actions { margin-top: 1.5rem; }
+
+/* extra fields under Steps */
+.steps-extra .form-field { margin-bottom: 0.75rem; }
+.steps-extra input[type="text"], .steps-extra textarea { width: 100%; padding: 0.6rem 0.9rem; border-radius:8px; border:1px solid var(--border-subtle); }
+
+/* signature */
+.signature-card .sig-canvas-wrap {
+  border: 1.5px dashed var(--border-subtle);
+  border-radius: 8px;
+  background: #fff;
+  height: 130px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+.signature-card .sig-canvas { width:100%; height:100%; }
+.sig-actions { display:flex; gap:0.75rem; }
+.confirm-btn { background: var(--primary-color); color:#fff; border:none; padding:0.5rem 1rem; border-radius:8px; cursor:pointer; }
+
+/* reassign card tweaks */
+.reassign-card .section-desc { margin:0 0 0.75rem; }
+.reassign-card select { width: 220px; padding: 0.6rem; border-radius:8px; border:1px solid var(--border-subtle); }
+
+/* make submit stand out */
+.submit-btn { min-width: 220px; background: var(--primary-color); color: #fff; border-radius: 8px; padding: 0.6rem 1.25rem; }

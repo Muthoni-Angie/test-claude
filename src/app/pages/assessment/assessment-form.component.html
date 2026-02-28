@@ -9,107 +9,367 @@
     <p class="subtitle">Rimadhiya Makiptono &nbsp;·&nbsp; CLT-MM158KUA-PG0O</p>
   </div>
 </div>
+
 <form #f="ngForm" (ngSubmit)="submit(f)" novalidate>
+
+  <!-- Living Conditions -->
   <section class="card">
-    <div class="form-field" [class.has-error]="childhoodExperience.invalid && childhoodExperience.touched">
-      <label>Childhood Experience *</label>
-      <textarea name="childhoodExperience" #childhoodExperience="ngModel" [(ngModel)]="model.childhoodExperience"
-        required rows="4" placeholder="Describe the client's childhood..."></textarea>
-      <span class="field-error" *ngIf="childhoodExperience.invalid && childhoodExperience.touched">This field is
-        required</span>
+    <h2>Living Conditions</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">How did you earn money before coming to this center?</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="earningMethod" [(ngModel)]="model.earningMethod" value="commercial-sex-work" /><span>Commercial sex work</span></label>
+        <label class="radio-item"><input type="radio" name="earningMethod" [(ngModel)]="model.earningMethod" value="begging" /><span>Begging</span></label>
+        <label class="radio-item"><input type="radio" name="earningMethod" [(ngModel)]="model.earningMethod" value="petty-street-trade" /><span>Petty street trade</span></label>
+        <label class="radio-item"><input type="radio" name="earningMethod" [(ngModel)]="model.earningMethod" value="day-labor" /><span>Day labor</span></label>
+        <label class="radio-item"><input type="radio" name="earningMethod" [(ngModel)]="model.earningMethod" value="small-scale-vending" /><span>Small-scale vending (Gult)</span></label>
+        <label class="radio-item"><input type="radio" name="earningMethod" [(ngModel)]="model.earningMethod" value="coffee-ceremony" /><span>Coffee ceremony services</span></label>
+        <label class="radio-item"><input type="radio" name="earningMethod" [(ngModel)]="model.earningMethod" value="waste-collection" /><span>Waste collection</span></label>
+        <label class="radio-item"><input type="radio" name="earningMethod" [(ngModel)]="model.earningMethod" value="other" /><span>Other</span></label>
+      </div>
     </div>
 
-    <div class="form-field" [class.has-error]="familyRelationships.invalid && familyRelationships.touched">
-      <label>Family Relationships *</label>
-      <textarea name="familyRelationships" #familyRelationships="ngModel" [(ngModel)]="model.familyRelationships"
-        required rows="4" placeholder="Current and past family dynamics..."></textarea>
-      <span class="field-error" *ngIf="familyRelationships.invalid && familyRelationships.touched">This field is
-        required</span>
-    </div>
-
-    <div class="form-field">
-      <label>Education History</label>
-      <textarea name="educationHistory" [(ngModel)]="model.educationHistory" rows="4"
-        placeholder="Educational background..."></textarea>
-    </div>
-    <div class="form-field">
-      <label>Employment History</label>
-      <textarea name="employmentHistory" [(ngModel)]="model.employmentHistory" rows="4"
-        placeholder="Work experience..."></textarea>
-    </div>
-
-    <div class="form-field">
-      <label>Substance Use History</label>
-      <textarea name="substanceUseHistory" [(ngModel)]="model.substanceUseHistory" rows="4"
-        placeholder="Any substance use..."></textarea>
-    </div>
-    <div class="form-field">
-      <label>Mental Health History</label>
-      <textarea name="mentalHealthHistory" [(ngModel)]="model.mentalHealthHistory" rows="4"
-        placeholder="Previous mental health concerns..."></textarea>
-    </div>
-
-    <div class="form-field">
-      <label>Previous Treatment</label>
-      <textarea name="previousTreatment" [(ngModel)]="model.previousTreatment" rows="4"
-        placeholder="Any previous treatment or programs..."></textarea>
-    </div>
-
-    <div class="form-field" [class.has-error]="currentSymptoms.invalid && currentSymptoms.touched">
-      <label>Current Symptoms *</label>
-      <textarea name="currentSymptoms" #currentSymptoms="ngModel" [(ngModel)]="model.currentSymptoms" required rows="4"
-        placeholder="Current emotional/psychological state..."></textarea>
-      <span class="field-error" *ngIf="currentSymptoms.invalid && currentSymptoms.touched">This field is required</span>
-    </div>
-
-    <div class="form-field">
-      <label>Coping Mechanisms</label>
-      <textarea name="copingMechanisms" [(ngModel)]="model.copingMechanisms" rows="4"
-        placeholder="How does the client cope..."></textarea>
-    </div>
-    <div class="form-field">
-      <label>Support Network</label>
-      <textarea name="supportNetwork" [(ngModel)]="model.supportNetwork" rows="4"
-        placeholder="Friends, family, community support..."></textarea>
-    </div>
-
-    <div class="form-field">
-      <label>Living Conditions (Prior)</label>
-      <textarea name="livingConditions" [(ngModel)]="model.livingConditions" rows="4"
-        placeholder="Describe living situation before the center..."></textarea>
-    </div>
-    <div class="form-field">
-      <label>Legal Issues</label>
-      <textarea name="legalIssues" [(ngModel)]="model.legalIssues" rows="4"
-        placeholder="Any legal concerns..."></textarea>
-    </div>
-
-    <div class="form-field">
-      <label>Physical Health</label>
-      <textarea name="physicalHealth" [(ngModel)]="model.physicalHealth" rows="4"
-        placeholder="Current physical health status..."></textarea>
-    </div>
-    <div class="form-field">
-      <label>Nutrition Status</label>
-      <textarea name="nutritionStatus" [(ngModel)]="model.nutritionStatus" rows="4"
-        placeholder="Nutritional concerns..."></textarea>
-    </div>
-
-    <div class="form-field">
-      <label>Trauma History</label>
-      <textarea name="traumaHistory" [(ngModel)]="model.traumaHistory" rows="4"
-        placeholder="Relevant trauma history (handle with sensitivity)..."></textarea>
-    </div>
-
-    <div class="form-field" [class.has-error]="futureGoals.invalid && futureGoals.touched">
-      <label>Future Goals *</label>
-      <textarea name="futureGoals" #futureGoals="ngModel" [(ngModel)]="model.futureGoals" required rows="4"
-        placeholder="Client's goals and aspirations..."></textarea>
-      <span class="field-error" *ngIf="futureGoals.invalid && futureGoals.touched">This field is required</span>
+    <div class="question-block">
+      <span class="question-label">How/with whom were you living before coming to this center?</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="street" /><span>Street</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="institution" /><span>Institution</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="domestic-worker" /><span>Domestic worker</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="day-labor" /><span>Day labor</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="family" /><span>Family</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="relative" /><span>Relative</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="dependent" /><span>Dependent</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="alone" /><span>Alone</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="boyfriend" /><span>Boyfriend</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="child" /><span>Child</span></label>
+        <label class="radio-item"><input type="radio" name="livingWith" [(ngModel)]="model.livingWith" value="other" /><span>Other</span></label>
+      </div>
     </div>
   </section>
 
+  <!-- Children's Status -->
+  <section class="card">
+    <h2>Children's Status</h2>
+    <hr class="section-divider" />
 
+    <div class="question-block">
+      <span class="question-label">Do you have children?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasChildren" [(ngModel)]="model.hasChildren" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasChildren" [(ngModel)]="model.hasChildren" value="no" /><span>No</span></label>
+        <input *ngIf="model.hasChildren === 'yes'" type="number" name="childrenCount" [(ngModel)]="model.childrenCount" class="count-input" min="1" max="20" placeholder="" />
+      </div>
+    </div>
+
+    <ng-container *ngIf="model.hasChildren === 'yes'">
+      <div class="question-block" *ngIf="ageInputs.length > 0">
+        <span class="question-label">Their ages?</span>
+        <div class="age-inputs-grid">
+          <input *ngFor="let i of ageInputs" [name]="'childAge' + i" [(ngModel)]="model.childrenAges[i]" type="text" class="age-input" placeholder="" />
+        </div>
+      </div>
+
+      <div class="question-block">
+        <span class="question-label">Before coming to this center, were your children living with you?</span>
+        <div class="radio-inline">
+          <label class="radio-item"><input type="radio" name="childrenLivedWith" [(ngModel)]="model.childrenLivedWith" value="yes" /><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivedWith" [(ngModel)]="model.childrenLivedWith" value="no" /><span>No</span></label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <span class="question-label">Who are your children living with now?</span>
+        <div class="radio-grid col-3">
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="institution" /><span>In an institution</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="father" /><span>With their father</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="family" /><span>With family</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="relatives" /><span>With relatives</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="guardian" /><span>With a guardian</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="neighbor" /><span>With a neighbor</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="other" /><span>Other</span></label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <span class="question-label">Do they go to school?</span>
+        <div class="radio-inline">
+          <label class="radio-item"><input type="radio" name="childrenGoToSchool" [(ngModel)]="model.childrenGoToSchool" value="yes" /><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="childrenGoToSchool" [(ngModel)]="model.childrenGoToSchool" value="no" /><span>No</span></label>
+        </div>
+      </div>
+    </ng-container>
+  </section>
+
+  <!-- Family Status -->
+  <section class="card">
+    <h2>Family Status</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">What is your relationship with your family like?</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="familyRelationship" [(ngModel)]="model.familyRelationship" value="strong" /><span>Strong</span></label>
+        <label class="radio-item"><input type="radio" name="familyRelationship" [(ngModel)]="model.familyRelationship" value="loose" /><span>Loose</span></label>
+        <label class="radio-item"><input type="radio" name="familyRelationship" [(ngModel)]="model.familyRelationship" value="disconnected" /><span>Disconnected</span></label>
+        <label class="radio-item"><input type="radio" name="familyRelationship" [(ngModel)]="model.familyRelationship" value="no-relationship" /><span>No relationship</span></label>
+        <label class="radio-item"><input type="radio" name="familyRelationship" [(ngModel)]="model.familyRelationship" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do they help you financially/emotionally?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="familyHelps" [(ngModel)]="model.familyHelps" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="familyHelps" [(ngModel)]="model.familyHelps" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you help them financially/emotionally?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="helpsFamily" [(ngModel)]="model.helpsFamily" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="helpsFamily" [(ngModel)]="model.helpsFamily" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you trust they will support you when needed?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="trustFamily" [(ngModel)]="model.trustFamily" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="trustFamily" [(ngModel)]="model.trustFamily" value="no" /><span>No</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Connections/Skills -->
+  <section class="card">
+    <h2>Social Connections/Skills</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">Do you have a close friend?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasCloseFriend" [(ngModel)]="model.hasCloseFriend" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasCloseFriend" [(ngModel)]="model.hasCloseFriend" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you trust them to help in times of need?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="trustFriend" [(ngModel)]="model.trustFriend" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="trustFriend" [(ngModel)]="model.trustFriend" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Are there people you consider essential in your life?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="essentialPeople" [(ngModel)]="model.essentialPeople" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="essentialPeople" [(ngModel)]="model.essentialPeople" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.essentialPeople === 'yes'">
+      <span class="question-label">If yes, who?</span>
+      <textarea name="essentialPeopleWho" [(ngModel)]="model.essentialPeopleWho" rows="2" placeholder=""></textarea>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you believe you have good communication and relationship skills?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="goodCommunication" [(ngModel)]="model.goodCommunication" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="goodCommunication" [(ngModel)]="model.goodCommunication" value="no" /><span>No</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Physical Health -->
+  <section class="card">
+    <h2>Physical Health</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">Do you have current health issues or injuries?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasHealthIssues" [(ngModel)]="model.hasHealthIssues" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasHealthIssues" [(ngModel)]="model.hasHealthIssues" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.hasHealthIssues === 'yes'">
+      <span class="question-label">If yes, type?</span>
+      <input type="text" name="healthIssueType" [(ngModel)]="model.healthIssueType" placeholder="" />
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Are you taking medication?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="takesMedication" [(ngModel)]="model.takesMedication" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="takesMedication" [(ngModel)]="model.takesMedication" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.takesMedication === 'yes'">
+      <span class="question-label">If yes, type?</span>
+      <input type="text" name="medicationType" [(ngModel)]="model.medicationType" placeholder="" />
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">What do you do when you feel ill?</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="whenIll" [(ngModel)]="model.whenIll" value="medical-facility" /><span>Medical facility</span></label>
+        <label class="radio-item"><input type="radio" name="whenIll" [(ngModel)]="model.whenIll" value="religious-rituals" /><span>Religious rituals</span></label>
+        <label class="radio-item"><input type="radio" name="whenIll" [(ngModel)]="model.whenIll" value="traditional-medicine" /><span>Traditional medicine</span></label>
+        <label class="radio-item"><input type="radio" name="whenIll" [(ngModel)]="model.whenIll" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Sleeping status</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="sleepingStatus" [(ngModel)]="model.sleepingStatus" value="sleep-well" /><span>Sleep well</span></label>
+        <label class="radio-item"><input type="radio" name="sleepingStatus" [(ngModel)]="model.sleepingStatus" value="not-enough-sleep" /><span>Not enough sleep</span></label>
+        <label class="radio-item"><input type="radio" name="sleepingStatus" [(ngModel)]="model.sleepingStatus" value="no-sleep" /><span>No sleep</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Personal hygiene</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="personalHygiene" [(ngModel)]="model.personalHygiene" value="maintain-well" /><span>Maintain well</span></label>
+        <label class="radio-item"><input type="radio" name="personalHygiene" [(ngModel)]="model.personalHygiene" value="do-not-care" /><span>Do not care</span></label>
+        <label class="radio-item"><input type="radio" name="personalHygiene" [(ngModel)]="model.personalHygiene" value="do-not-maintain" /><span>Do not maintain</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emotional and Mental Health -->
+  <section class="card">
+    <h2>Emotional and Mental Health</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">Have you experienced depression, anxiety, or mental health issues?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasMentalHealthIssues" [(ngModel)]="model.hasMentalHealthIssues" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasMentalHealthIssues" [(ngModel)]="model.hasMentalHealthIssues" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you feel lonely?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="feelsLonely" [(ngModel)]="model.feelsLonely" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="feelsLonely" [(ngModel)]="model.feelsLonely" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Have you thought about harming yourself?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="thoughtsOfSelfHarm" [(ngModel)]="model.thoughtsOfSelfHarm" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="thoughtsOfSelfHarm" [(ngModel)]="model.thoughtsOfSelfHarm" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Have you ever attempted suicide?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="attemptedSuicide" [(ngModel)]="model.attemptedSuicide" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="attemptedSuicide" [(ngModel)]="model.attemptedSuicide" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.attemptedSuicide === 'yes'">
+      <span class="question-label">If yes</span>
+      <div class="two-col-inputs">
+        <input type="text" name="suicideWhen" [(ngModel)]="model.suicideWhen" placeholder="When?" />
+        <input type="text" name="suicideHow" [(ngModel)]="model.suicideHow" placeholder="How?" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Substance Use -->
+  <section class="card">
+    <h2>Substance Use</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">Do you use drugs or alcohol?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="usesDrugsAlcohol" [(ngModel)]="model.usesDrugsAlcohol" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="usesDrugsAlcohol" [(ngModel)]="model.usesDrugsAlcohol" value="no" /><span>No</span></label>
+        <label class="radio-item"><input type="radio" name="usesDrugsAlcohol" [(ngModel)]="model.usesDrugsAlcohol" value="occasionally" /><span>Occasionally</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.usesDrugsAlcohol === 'yes' || model.usesDrugsAlcohol === 'occasionally'">
+      <span class="question-label">If yes, why?</span>
+      <textarea name="substanceReason" [(ngModel)]="model.substanceReason" rows="2" placeholder=""></textarea>
+    </div>
+  </section>
+
+  <!-- Personal Strengths and Coping Mechanisms -->
+  <section class="card">
+    <h2>Personal Strengths and Coping Mechanisms</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">How do you solve daily problems?</span>
+      <textarea name="solveDailyProblems" [(ngModel)]="model.solveDailyProblems" rows="2" placeholder=""></textarea>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">How do you control severe emotional distress?</span>
+      <textarea name="controlEmotionalDistress" [(ngModel)]="model.controlEmotionalDistress" rows="2" placeholder=""></textarea>
+    </div>
+  </section>
+
+  <!-- Spirituality -->
+  <section class="card">
+    <h2>Spirituality</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">Religion</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="none" /><span>None</span></label>
+        <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="orthodox" /><span>Orthodox</span></label>
+        <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="catholic" /><span>Catholic</span></label>
+        <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="protestant" /><span>Protestant</span></label>
+        <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="muslim" /><span>Muslim</span></label>
+        <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="wakefeta" /><span>Wakefeta</span></label>
+        <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Has spiritual life helped you?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="spiritualLifeHelped" [(ngModel)]="model.spiritualLifeHelped" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualLifeHelped" [(ngModel)]="model.spiritualLifeHelped" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.spiritualLifeHelped === 'yes'">
+      <span class="question-label">If yes, how?</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="comfort" /><span>Comfort</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="hope" /><span>Hope</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="forgiveness" /><span>Forgiveness</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="morality" /><span>Morality</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="internal-stability" /><span>Internal stability</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="forgetting-worry" /><span>Forgetting worry</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="patience" /><span>Patience</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="good-deeds" /><span>Good deeds</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="character" /><span>Character</span></label>
+        <label class="radio-item"><input type="radio" name="spiritualHelp" [(ngModel)]="model.spiritualHelp" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+  </section>
 
   <!-- Survey Summary (Case Manager Only) -->
   <section class="card">
@@ -121,8 +381,7 @@
       <textarea name="summaryObservations" #summaryObservations="ngModel" [(ngModel)]="model.summaryObservations"
         required rows="3"
         placeholder="Your professional observations, summary of the assessment, and initial recommendations..."></textarea>
-      <span class="field-error" *ngIf="summaryObservations.invalid && summaryObservations.touched">Summary is
-        required</span>
+      <span class="field-error" *ngIf="summaryObservations.invalid && summaryObservations.touched">Summary is required</span>
     </div>
   </section>
 
@@ -144,8 +403,7 @@
   <div class="form-actions">
     <button class="secondary-btn" type="button" (click)="goBack()">Leave form</button>
     <button class="primary-btn submit-btn" type="submit" [disabled]="submitted">
-      <svg *ngIf="!submitted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2.5">
+      <svg *ngIf="!submitted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <polyline points="20 6 9 17 4 12" />
       </svg>
       {{ submitted ? 'Submitting…' : 'Submit Form' }}
