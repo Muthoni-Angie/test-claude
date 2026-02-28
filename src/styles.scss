@@ -61,6 +61,16 @@ button {
   border: 1px solid rgba(148, 163, 184, 0.25);
 }
 
+.card h2 {
+  color: #131C20;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0 0 0.75rem;
+}
+
 .form-field {
   display: flex;
   flex-direction: column;

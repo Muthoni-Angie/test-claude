@@ -21,7 +21,7 @@ section.card {
 }
 
 section.card h2 {
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.75rem;
   font-size: 0.96rem;
 }
 
@@ -32,19 +32,16 @@ section + section {
 .section-divider {
   border: none;
   border-top: 1px solid var(--border-subtle);
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
 }
+
 .section-desc {
   margin: 0 0 1rem;
   font-size: 0.85rem;
   color: #4b5563;
 }
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem 1.25rem;
-}
 
+/* Save banner */
 .save-banner {
   display: flex;
   align-items: center;
@@ -59,8 +56,58 @@ section + section {
   max-width: 760px;
 }
 
+/* Grid layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Form fields */
+.form-field {
+  margin-bottom: 0.75rem;
+}
+
+.form-field label,
+.form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: #374151;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.07);
+}
+
 .has-error input,
-.has-error select {
+.has-error select,
+.has-error textarea {
   border-color: #f87171;
 }
 
@@ -71,6 +118,130 @@ section + section {
   margin-top: 0.25rem;
 }
 
+/* Standalone inputs (outside .form-field) */
+section.card > .question-block input[type="text"],
+section.card > .question-block input[type="number"],
+.question-block > input {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* Question blocks */
+.question-block {
+  margin-bottom: 1.5rem;
+}
+
+.question-block:last-child {
+  margin-bottom: 0;
+}
+
+.question-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 0.85rem;
+}
+
+/* Radio grids */
+.radio-grid {
+  display: grid;
+  gap: 0.75rem 1rem;
+}
+
+.radio-grid.col-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Inline radio row */
+.radio-inline {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.radio-item input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ID inline input */
+.id-input {
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  min-width: 160px;
+}
+
+.id-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.07);
+}
+
+/* Services expected list */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.service-input {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.875rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.service-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.07);
+}
+
+/* Add more button */
+.add-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.45rem 1rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  color: #374151;
+}
+
+.add-more-btn:hover {
+  background: #f9fafb;
+}
+
+/* Form actions */
 .form-actions {
   display: flex;
   gap: 0.75rem;
@@ -90,7 +261,9 @@ section + section {
   color: #374151;
 }
 
-.secondary-btn:hover { background: #f9fafb; }
+.secondary-btn:hover {
+  background: #f9fafb;
+}
 
 .submit-btn {
   display: flex;

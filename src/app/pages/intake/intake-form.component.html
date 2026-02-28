@@ -6,7 +6,7 @@
   </button>
   <div>
     <h1>Intake &amp; Admission Form</h1>
-    <p class="subtitle">Complete the client's intake details</p>
+    <p class="subtitle">Rimadhiya Makiptono &nbsp;·&nbsp; CLT-MM158KUA-PG0O</p>
   </div>
 </div>
 
@@ -19,202 +19,386 @@
 
 <form #f="ngForm" (ngSubmit)="submit(f)" novalidate>
 
+  <!-- Personal Information -->
   <section class="card">
-    <h2>Personal Details</h2>
+    <h2>Personal Information</h2>
     <hr class="section-divider" />
-    <p class="section-desc">Enter the client's basic personal information so we can identify them.</p>
 
     <div class="grid-2">
       <div class="form-field" [class.has-error]="fullName.invalid && fullName.touched">
         <label>Client Full Name *</label>
-        <input name="fullName" #fullName="ngModel" [(ngModel)]="model.fullName"
-          required placeholder="Enter full name" />
+        <input name="fullName" #fullName="ngModel" [(ngModel)]="model.fullName" required placeholder="" />
         <span class="field-error" *ngIf="fullName.invalid && fullName.touched">Full name is required</span>
       </div>
+      <div class="form-field">
+        <label>ID/Code</label>
+        <input name="idCode" [(ngModel)]="model.idCode" placeholder="" />
+      </div>
+    </div>
 
+    <div class="grid-2">
       <div class="form-field" [class.has-error]="age.invalid && age.touched">
         <label>Age *</label>
-        <input type="number" name="age" #age="ngModel" [(ngModel)]="model.age"
-          required min="1" max="120" placeholder="Age" />
+        <input type="number" name="age" #age="ngModel" [(ngModel)]="model.age" required min="1" max="120" placeholder="" />
         <span class="field-error" *ngIf="age.errors?.['required'] && age.touched">Age is required</span>
         <span class="field-error" *ngIf="(age.errors?.['min'] || age.errors?.['max']) && age.touched">Enter a valid age (1–120)</span>
       </div>
-    </div>
-
-    <div class="grid-2">
-      <div class="form-field" [class.has-error]="sex.invalid && sex.touched">
-        <label>Sex *</label>
-        <select name="sex" #sex="ngModel" [(ngModel)]="model.sex" required>
-          <option value="">Select</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
-        </select>
-        <span class="field-error" *ngIf="sex.invalid && sex.touched">Please select a sex</span>
-      </div>
-
       <div class="form-field" [class.has-error]="phone.invalid && phone.touched">
         <label>Phone Number *</label>
-        <input name="phone" #phone="ngModel" [(ngModel)]="model.phone"
-          required [pattern]="phonePattern"
-          placeholder="+254 700 000 000" />
+        <input name="phone" #phone="ngModel" [(ngModel)]="model.phone" required [pattern]="phonePattern" placeholder="" />
         <span class="field-error" *ngIf="phone.errors?.['required'] && phone.touched">Phone number is required</span>
-        <span class="field-error" *ngIf="phone.errors?.['pattern'] && phone.touched">Enter a valid phone number (digits, +, spaces, dashes)</span>
-      </div>
-    </div>
-
-    <div class="grid-2">
-      <div class="form-field" [class.has-error]="emergency.invalid && emergency.touched">
-        <label>Emergency Contact</label>
-        <input name="emergency" #emergency="ngModel" [(ngModel)]="model.emergencyContact"
-          [pattern]="phonePattern"
-          placeholder="+254 700 000 000" />
-        <span class="field-error" *ngIf="emergency.errors?.['pattern'] && emergency.touched">Enter a valid phone number</span>
-      </div>
-
-      <div class="form-field">
-        <label>Nationality</label>
-        <input name="nationality" [(ngModel)]="model.nationality" placeholder="Nationality" />
-      </div>
-    </div>
-
-    <div class="grid-2">
-      <div class="form-field">
-        <label>Marital Status</label>
-        <select name="maritalStatus" [(ngModel)]="model.maritalStatus">
-          <option value="">Select</option>
-          <option>Single</option><option>Married</option>
-          <option>Divorced</option><option>Widowed</option>
-        </select>
-      </div>
-
-      <div class="form-field">
-        <label>Religion</label>
-        <select name="religion" [(ngModel)]="model.religion">
-          <option value="">Select</option>
-          <option>Christian</option><option>Muslim</option><option>Other</option>
-        </select>
+        <span class="field-error" *ngIf="phone.errors?.['pattern'] && phone.touched">Enter a valid phone number</span>
       </div>
     </div>
   </section>
 
+  <!-- Admission Category -->
   <section class="card">
-    <h2>Background &amp; Admission</h2>
+    <h2>Admission Category</h2>
     <hr class="section-divider" />
-    <p class="section-desc">Record the client's admission category and any relevant background details.</p>
 
-    <div class="grid-2">
-      <div class="form-field" [class.has-error]="admCat.invalid && admCat.touched">
-        <label>Admission Category *</label>
-        <select name="admissionCategory" #admCat="ngModel" [(ngModel)]="model.admissionCategory" required>
-          <option value="">Select</option>
-          <option>Sex Worker</option>
-          <option>Drug User</option>
-          <option>MSM</option>
-          <option>Other</option>
-        </select>
-        <span class="field-error" *ngIf="admCat.invalid && admCat.touched">Admission category is required</span>
-      </div>
+    <div class="question-block">
+      <label class="form-label">Educational Level</label>
+      <input name="educationalLevel" [(ngModel)]="model.educationalLevel" placeholder="" />
+    </div>
 
-      <div class="form-field">
-        <label>Target Group</label>
-        <select name="targetGroup" [(ngModel)]="model.targetGroup">
-          <option value="">Select</option>
-          <option>Female SW</option>
-          <option>Male SW</option>
-          <option>PWID</option>
-          <option>MSM</option>
-        </select>
+    <div class="question-block">
+      <span class="question-label">Can you read and write Amharic?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="canReadWriteAmharic" [(ngModel)]="model.canReadWriteAmharic" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="canReadWriteAmharic" [(ngModel)]="model.canReadWriteAmharic" value="no" /><span>No</span></label>
       </div>
     </div>
 
-    <div class="grid-2">
-      <div class="form-field">
-        <label>Place of Origin</label>
-        <input name="placeOfOrigin" [(ngModel)]="model.placeOfOrigin" placeholder="City or region" />
-      </div>
-      <div class="form-field">
-        <label>Education Level</label>
-        <input name="educationLevel" [(ngModel)]="model.educationLevel" placeholder="Highest education level" />
-      </div>
-    </div>
-
-    <div class="grid-2">
-      <div class="form-field">
-        <label>Cohort</label>
-        <input name="cohort" [(ngModel)]="model.cohort" placeholder="e.g. March 2026" />
-      </div>
-      <div class="form-field">
-        <label>Dorm Number</label>
-        <input name="dormNumber" [(ngModel)]="model.dormNumber" placeholder="Dorm number" />
+    <div class="question-block">
+      <span class="question-label">Family Background</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="familyBackground" [(ngModel)]="model.familyBackground" value="none" /><span>None</span></label>
+        <label class="radio-item"><input type="radio" name="familyBackground" [(ngModel)]="model.familyBackground" value="orthodox" /><span>Orthodox</span></label>
+        <label class="radio-item"><input type="radio" name="familyBackground" [(ngModel)]="model.familyBackground" value="catholic" /><span>Catholic</span></label>
+        <label class="radio-item"><input type="radio" name="familyBackground" [(ngModel)]="model.familyBackground" value="protestant" /><span>Protestant</span></label>
+        <label class="radio-item"><input type="radio" name="familyBackground" [(ngModel)]="model.familyBackground" value="muslim" /><span>Muslim</span></label>
+        <label class="radio-item"><input type="radio" name="familyBackground" [(ngModel)]="model.familyBackground" value="wakefeta" /><span>Wakefeta</span></label>
+        <label class="radio-item"><input type="radio" name="familyBackground" [(ngModel)]="model.familyBackground" value="other" /><span>Other</span></label>
       </div>
     </div>
 
-    <div class="form-field">
-      <label>Tiko Card Number</label>
-      <input name="tikoCard" [(ngModel)]="model.tikoCardNumber" placeholder="Tiko card number" />
+    <div class="question-block">
+      <label class="form-label">Place of Birth</label>
+      <input name="placeOfBirth" [(ngModel)]="model.placeOfBirth" placeholder="" />
     </div>
-  </section>
 
-  <!-- Health & Additional Info -->
-  <section class="card">
-    <h2>Health &amp; Additional Info</h2>
-    <hr class="section-divider" />
-    <p class="section-desc">Provide any health-related information and other useful notes.</p>
-    <div class="grid-2">
+    <div class="grid-3">
       <div class="form-field">
-        <label>Has Children?</label>
-        <select name="hasChildren" [(ngModel)]="model.hasChildren">
-          <option value="">Select</option>
-          <option>Yes</option><option>No</option>
-        </select>
+        <label>Sub-city</label>
+        <input name="subCity" [(ngModel)]="model.subCity" placeholder="" />
       </div>
       <div class="form-field">
-        <label>Physical Disabilities</label>
-        <textarea name="physicalDisabilities" [(ngModel)]="model.physicalDisabilities" rows="4" placeholder="Describe any disabilities"></textarea>
+        <label>Woreda</label>
+        <input name="woreda" [(ngModel)]="model.woreda" placeholder="" />
+      </div>
+      <div class="form-field">
+        <label>Specific Area</label>
+        <input name="specificArea" [(ngModel)]="model.specificArea" placeholder="" />
       </div>
     </div>
-    <div class="grid-2">
-      <div class="form-field">
-        <label>Health Issues</label>
-        <textarea name="healthIssues" [(ngModel)]="model.healthIssues" rows="4" placeholder="List health issues"></textarea>
+
+    <div class="question-block">
+      <span class="question-label">Do you have an Addis Ababa Residency ID?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasAddisResidencyId" [(ngModel)]="model.hasAddisResidencyId" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasAddisResidencyId" [(ngModel)]="model.hasAddisResidencyId" value="no" /><span>No</span></label>
+        <input *ngIf="model.hasAddisResidencyId === 'yes'" type="text" name="addisResidencyId" [(ngModel)]="model.addisResidencyId" class="id-input" placeholder="Insert the ID" />
       </div>
-      <div class="form-field">
-        <label>Unique Talents</label>
-        <textarea name="uniqueTalents" [(ngModel)]="model.uniqueTalents" rows="4" placeholder="Any talents?"></textarea>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you have a Fayda (National) ID?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasFaydaId" [(ngModel)]="model.hasFaydaId" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasFaydaId" [(ngModel)]="model.hasFaydaId" value="no" /><span>No</span></label>
+        <input *ngIf="model.hasFaydaId === 'yes'" type="text" name="faydaId" [(ngModel)]="model.faydaId" class="id-input" placeholder="Insert the ID" />
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you have an Unemployment ID?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasUnemploymentId" [(ngModel)]="model.hasUnemploymentId" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasUnemploymentId" [(ngModel)]="model.hasUnemploymentId" value="no" /><span>No</span></label>
+        <input *ngIf="model.hasUnemploymentId === 'yes'" type="text" name="unemploymentId" [(ngModel)]="model.unemploymentId" class="id-input" placeholder="Insert the ID" />
       </div>
     </div>
   </section>
 
-
-
-
-
-
-
-  <!-- Family Background & Expectations -->
+  <!-- Emergency Contact -->
   <section class="card">
-    <h2>Family Background &amp; Expectations</h2>
+    <h2>Emergency Contact</h2>
     <hr class="section-divider" />
-    <p class="section-desc">Tell us about the client's family history and their goals after the program.</p>
-    <div class="form-field">
-      <label>Family Background</label>
-      <textarea name="familyBackground" [(ngModel)]="model.familyBackground" rows="3" placeholder="Brief family history..."></textarea>
+
+    <div class="grid-2">
+      <div class="form-field">
+        <label>Emergency Contact Person Name</label>
+        <input name="emergencyContactName" [(ngModel)]="model.emergencyContactName" placeholder="" />
+      </div>
+      <div class="form-field">
+        <label>Phone Number</label>
+        <input name="emergencyContactPhone" [(ngModel)]="model.emergencyContactPhone" placeholder="" />
+      </div>
     </div>
+
     <div class="form-field">
-      <label>Expectations After Program</label>
-      <textarea name="expectationsAfterProgram" [(ngModel)]="model.expectationsAfterProgram" rows="3" placeholder="Client's goals and expectations..."></textarea>
+      <label>Relationship to the applicant</label>
+      <input name="emergencyRelationship" [(ngModel)]="model.emergencyRelationship" placeholder="" />
     </div>
   </section>
 
-  <!-- Next step: Planning -->
+  <!-- Religion -->
   <section class="card">
-    <h2>Next step: Planning</h2>
+    <h2>Religion</h2>
     <hr class="section-divider" />
-    <p class="section-desc">Please select a planning date so we can automatically remind you when it's time to follow up with this client.</p>
-    <div class="form-field">
-      <label>Planning date</label>
-      <input type="date" name="planningDate" [(ngModel)]="model.planningDate" />
+
+    <div class="radio-grid col-3">
+      <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="none" /><span>None</span></label>
+      <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="orthodox" /><span>Orthodox</span></label>
+      <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="catholic" /><span>Catholic</span></label>
+      <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="protestant" /><span>Protestant</span></label>
+      <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="muslim" /><span>Muslim</span></label>
+      <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="wakefeta" /><span>Wakefeta</span></label>
+      <label class="radio-item"><input type="radio" name="religion" [(ngModel)]="model.religion" value="other" /><span>Other</span></label>
+    </div>
+  </section>
+
+  <!-- Background & Referral -->
+  <section class="card">
+    <h2>Background &amp; Referral</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">How did you hear about this center?</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="heardAboutCenter" [(ngModel)]="model.heardAboutCenter" value="friend" /><span>Friend</span></label>
+        <label class="radio-item"><input type="radio" name="heardAboutCenter" [(ngModel)]="model.heardAboutCenter" value="family" /><span>Family</span></label>
+        <label class="radio-item"><input type="radio" name="heardAboutCenter" [(ngModel)]="model.heardAboutCenter" value="neighbor" /><span>Neighbor/Neighborhood</span></label>
+        <label class="radio-item"><input type="radio" name="heardAboutCenter" [(ngModel)]="model.heardAboutCenter" value="former-beneficiary" /><span>Former beneficiary/Woman who was at the cente</span></label>
+        <label class="radio-item"><input type="radio" name="heardAboutCenter" [(ngModel)]="model.heardAboutCenter" value="subcity-woreda" /><span>Sub-city/Woreda/Government structure</span></label>
+        <label class="radio-item"><input type="radio" name="heardAboutCenter" [(ngModel)]="model.heardAboutCenter" value="media" /><span>Media</span></label>
+        <label class="radio-item"><input type="radio" name="heardAboutCenter" [(ngModel)]="model.heardAboutCenter" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Before coming to this center, with whom/how were you living?</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="street" /><span>On the street</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="institution" /><span>In an institution</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="domestic-worker" /><span>As a domestic worker</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="day-laborer" /><span>As a day laborer</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="family" /><span>With family</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="relatives" /><span>With relatives</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="dependent" /><span>Dependent</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="alone" /><span>Alone</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="boyfriend" /><span>With a boyfriend</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="child" /><span>With a child</span></label>
+        <label class="radio-item"><input type="radio" name="livingBeforeCenter" [(ngModel)]="model.livingBeforeCenter" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you have children?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasChildren" [(ngModel)]="model.hasChildren" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasChildren" [(ngModel)]="model.hasChildren" value="no" /><span>No</span></label>
+        <input *ngIf="model.hasChildren === 'yes'" type="number" name="childrenCount" [(ngModel)]="model.childrenCount" class="id-input" placeholder="Number of Children" min="1" />
+      </div>
+    </div>
+
+    <ng-container *ngIf="model.hasChildren === 'yes'">
+      <div class="question-block">
+        <span class="question-label">Before coming to this center, were your children living with you?</span>
+        <div class="radio-inline">
+          <label class="radio-item"><input type="radio" name="childrenLivedWith" [(ngModel)]="model.childrenLivedWith" value="yes" /><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivedWith" [(ngModel)]="model.childrenLivedWith" value="no" /><span>No</span></label>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <span class="question-label">Who are your children living with now?</span>
+        <div class="radio-grid col-3">
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="institution" /><span>In an institution</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="father" /><span>With their father</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="family" /><span>With family</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="relatives" /><span>With relatives</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="guardian" /><span>With a guardian</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="neighbor" /><span>With a neighbor</span></label>
+          <label class="radio-item"><input type="radio" name="childrenLivingWith" [(ngModel)]="model.childrenLivingWith" value="other" /><span>Other</span></label>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="question-block">
+      <span class="question-label">What kind of services and support do you expect to receive from this center?</span>
+      <div class="services-list">
+        <input *ngFor="let s of model.servicesExpected; let i = index"
+          [name]="'service' + i"
+          [(ngModel)]="model.servicesExpected[i]"
+          placeholder=""
+          class="service-input" />
+      </div>
+      <button type="button" class="add-more-btn" (click)="addServiceExpectation()">
+        <span>+</span> Add one more
+      </button>
+    </div>
+  </section>
+
+  <!-- Skills and Health -->
+  <section class="card">
+    <h2>Skills and Health</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">Have you ever taken formal vocational training?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hadVocationalTraining" [(ngModel)]="model.hadVocationalTraining" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hadVocationalTraining" [(ngModel)]="model.hadVocationalTraining" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.hadVocationalTraining === 'yes'">
+      <span class="question-label">If yes, what kind of training?</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="trainingType" [(ngModel)]="model.trainingType" value="beauty" /><span>Beauty/Aesthetics</span></label>
+        <label class="radio-item"><input type="radio" name="trainingType" [(ngModel)]="model.trainingType" value="food-prep" /><span>Food preparation and catering</span></label>
+        <label class="radio-item"><input type="radio" name="trainingType" [(ngModel)]="model.trainingType" value="sewing" /><span>Sewing/Embroidery</span></label>
+        <label class="radio-item"><input type="radio" name="trainingType" [(ngModel)]="model.trainingType" value="housekeeping" /><span>Housekeeping</span></label>
+        <label class="radio-item"><input type="radio" name="trainingType" [(ngModel)]="model.trainingType" value="childcare" /><span>Childcare</span></label>
+        <label class="radio-item"><input type="radio" name="trainingType" [(ngModel)]="model.trainingType" value="construction" /><span>Construction</span></label>
+        <label class="radio-item"><input type="radio" name="trainingType" [(ngModel)]="model.trainingType" value="computer" /><span>Computer training</span></label>
+        <label class="radio-item"><input type="radio" name="trainingType" [(ngModel)]="model.trainingType" value="leatherwork" /><span>Leatherwork</span></label>
+        <label class="radio-item"><input type="radio" name="trainingType" [(ngModel)]="model.trainingType" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you have a physical disability</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasPhysicalDisability" [(ngModel)]="model.hasPhysicalDisability" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasPhysicalDisability" [(ngModel)]="model.hasPhysicalDisability" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.hasPhysicalDisability === 'yes'">
+      <span class="question-label">If yes</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="physicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="eye" /><span>Eye</span></label>
+        <label class="radio-item"><input type="radio" name="physicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="ear" /><span>Ear</span></label>
+        <label class="radio-item"><input type="radio" name="physicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="hand" /><span>Hand</span></label>
+        <label class="radio-item"><input type="radio" name="physicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="leg" /><span>Leg</span></label>
+        <label class="radio-item"><input type="radio" name="physicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="speech" /><span>Speech</span></label>
+        <label class="radio-item"><input type="radio" name="physicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you have any known health conditions?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasHealthConditions" [(ngModel)]="model.hasHealthConditions" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasHealthConditions" [(ngModel)]="model.hasHealthConditions" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.hasHealthConditions === 'yes'">
+      <span class="question-label">If yes</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="healthConditionType" [(ngModel)]="model.healthConditionType" value="skin" /><span>Skin</span></label>
+        <label class="radio-item"><input type="radio" name="healthConditionType" [(ngModel)]="model.healthConditionType" value="diabetes" /><span>Diabetes</span></label>
+        <label class="radio-item"><input type="radio" name="healthConditionType" [(ngModel)]="model.healthConditionType" value="internal-medicine" /><span>Internal medicine</span></label>
+        <label class="radio-item"><input type="radio" name="healthConditionType" [(ngModel)]="model.healthConditionType" value="respiratory" /><span>Respiratory</span></label>
+        <label class="radio-item"><input type="radio" name="healthConditionType" [(ngModel)]="model.healthConditionType" value="mental-health" /><span>Mental health</span></label>
+        <label class="radio-item"><input type="radio" name="healthConditionType" [(ngModel)]="model.healthConditionType" value="hiv" /><span>HIV</span></label>
+        <label class="radio-item"><input type="radio" name="healthConditionType" [(ngModel)]="model.healthConditionType" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal and Observations -->
+  <section class="card">
+    <h2>Legal and Observations</h2>
+    <hr class="section-divider" />
+
+    <div class="question-block">
+      <span class="question-label">Do you have any ongoing legal matters?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="hasLegalMatters" [(ngModel)]="model.hasLegalMatters" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="hasLegalMatters" [(ngModel)]="model.hasLegalMatters" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.hasLegalMatters === 'yes'">
+      <span class="question-label">If yes</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="legalMatterType" [(ngModel)]="model.legalMatterType" value="inheritance" /><span>Inheritance</span></label>
+        <label class="radio-item"><input type="radio" name="legalMatterType" [(ngModel)]="model.legalMatterType" value="physical-altercation" /><span>Physical altercation/fight</span></label>
+        <label class="radio-item"><input type="radio" name="legalMatterType" [(ngModel)]="model.legalMatterType" value="assault" /><span>Assault</span></label>
+        <label class="radio-item"><input type="radio" name="legalMatterType" [(ngModel)]="model.legalMatterType" value="child-support" /><span>Child support and maintenance</span></label>
+        <label class="radio-item"><input type="radio" name="legalMatterType" [(ngModel)]="model.legalMatterType" value="legal-representation" /><span>Legal representation</span></label>
+        <label class="radio-item"><input type="radio" name="legalMatterType" [(ngModel)]="model.legalMatterType" value="robbery-fraud" /><span>Robbery/Fraud</span></label>
+        <label class="radio-item"><input type="radio" name="legalMatterType" [(ngModel)]="model.legalMatterType" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you have a physical disability</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="legalHasPhysicalDisability" [(ngModel)]="model.hasPhysicalDisability" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="legalHasPhysicalDisability" [(ngModel)]="model.hasPhysicalDisability" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.hasPhysicalDisability === 'yes'">
+      <span class="question-label">If yes</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="legalPhysicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="eye" /><span>Eye</span></label>
+        <label class="radio-item"><input type="radio" name="legalPhysicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="ear" /><span>Ear</span></label>
+        <label class="radio-item"><input type="radio" name="legalPhysicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="hand" /><span>Hand</span></label>
+        <label class="radio-item"><input type="radio" name="legalPhysicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="leg" /><span>Leg</span></label>
+        <label class="radio-item"><input type="radio" name="legalPhysicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="speech" /><span>Speech</span></label>
+        <label class="radio-item"><input type="radio" name="legalPhysicalDisabilityType" [(ngModel)]="model.physicalDisabilityType" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <span class="question-label">Do you have any known health conditions?</span>
+      <div class="radio-inline">
+        <label class="radio-item"><input type="radio" name="legalHasHealthConditions" [(ngModel)]="model.hasHealthConditions" value="yes" /><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="legalHasHealthConditions" [(ngModel)]="model.hasHealthConditions" value="no" /><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="question-block" *ngIf="model.hasHealthConditions === 'yes'">
+      <span class="question-label">If yes</span>
+      <div class="radio-grid col-3">
+        <label class="radio-item"><input type="radio" name="legalHealthConditionType" [(ngModel)]="model.healthConditionType" value="skin" /><span>Skin</span></label>
+        <label class="radio-item"><input type="radio" name="legalHealthConditionType" [(ngModel)]="model.healthConditionType" value="diabetes" /><span>Diabetes</span></label>
+        <label class="radio-item"><input type="radio" name="legalHealthConditionType" [(ngModel)]="model.healthConditionType" value="internal-medicine" /><span>Internal medicine</span></label>
+        <label class="radio-item"><input type="radio" name="legalHealthConditionType" [(ngModel)]="model.healthConditionType" value="respiratory" /><span>Respiratory</span></label>
+        <label class="radio-item"><input type="radio" name="legalHealthConditionType" [(ngModel)]="model.healthConditionType" value="mental-health" /><span>Mental health</span></label>
+        <label class="radio-item"><input type="radio" name="legalHealthConditionType" [(ngModel)]="model.healthConditionType" value="hiv" /><span>HIV</span></label>
+        <label class="radio-item"><input type="radio" name="legalHealthConditionType" [(ngModel)]="model.healthConditionType" value="other" /><span>Other</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Worker's Observations -->
+  <section class="card">
+    <h2>Social Worker's Observations:</h2>
+    <hr class="section-divider" />
+    <div class="form-field" [class.has-error]="summaryObs.invalid && summaryObs.touched">
+      <label>Summary &amp; Observations *</label>
+      <textarea name="summaryObservations" #summaryObs="ngModel" [(ngModel)]="model.summaryObservations"
+        required rows="4"
+        placeholder="Your professional observations, summary of the assessment, and initial recommendations..."></textarea>
+      <span class="field-error" *ngIf="summaryObs.invalid && summaryObs.touched">Summary is required</span>
     </div>
   </section>
 
@@ -222,7 +406,7 @@
   <section class="card">
     <h2>Re-Assign Case Manager</h2>
     <hr class="section-divider" />
-    <p class="section-desc">Currently assigned Case Manager for {{ model.fullName || 'this client' }} is Alexa Brown, if you want to change the Case Manager please select one from the dropdown form.</p>
+    <p class="section-desc">Currently assigned Case Manager for {{ model.fullName || 'this client' }} is Alexa Brown, if you want to change the Case Manager please select one from the dropdown form</p>
     <div class="form-field">
       <label>Case Manager</label>
       <select name="reassignedManager" [(ngModel)]="model.reassignedManager">
